@@ -5,6 +5,6 @@ import com.bank.account.management.domain.entities.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository
-public class AccountRepository extends JpaRepository<Account, Integer>{
+public interface AccountRepository extends JpaRepository<Account, Integer>{
 
 }
