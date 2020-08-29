@@ -4,7 +4,9 @@ import com.bank.account.management.application.commands.CreateAccountCommand;
 import com.bank.account.management.application.dto.AccountDTO;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AccountService {
 	
 	@Autowired
@@ -17,7 +19,7 @@ public class AccountService {
 	 * @param accountDTO
 	 */
 	public void createAccount(AccountDTO accountDTO) {
-		//return commandGateway.send(new CreateAccountCommand(accou));
+		commandGateway.send(new CreateAccountCommand(accountDTO.getAccountName(), accountDTO.getProductClass()));
 	}
 
 }

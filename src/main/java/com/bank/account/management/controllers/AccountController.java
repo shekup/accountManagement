@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bank.account.management.application.dto.AccountDTO;
 import com.bank.account.management.application.service.AccountManagementService;
+import com.bank.account.management.exception.AccountCreationException;
 
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping(value = "/accounts")
+// @RequestMapping(value = "/bank") optional
 @Api(value = "Bank Account API")
 @AllArgsConstructor
 public class AccountController {
@@ -45,7 +46,12 @@ public class AccountController {
 	
 	@PostMapping("/account")
 	public String createAccount(@RequestBody AccountDTO account) {
-		accountManagementService.createAccount(account);
+		try {
+			accountManagementService.createAccount(account);
+		}catch(Exception e) {
+			throw new AccountCreationException(e.getMessage());
+		}
+		
 		return "Saved";
 	}
 	
