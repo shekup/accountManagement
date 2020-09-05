@@ -1,0 +1,22 @@
+package com.bank.account.management.domain.events;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import java.util.UUID;
+
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class CreateAccountEvent {
+	
+	private UUID accountId;
+	
+	@Getter @Setter private String accountName;
+	
+	@Getter @Setter private String productClass;
+
+}
